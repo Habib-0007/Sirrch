@@ -1,0 +1,2 @@
+# Sirrch
+A simple dictionary
