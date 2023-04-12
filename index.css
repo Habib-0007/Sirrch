@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: 'ABeeZee', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(237, 26, 223);
+}
+
+section.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+header h1 {
+    font-size: 2.4em;
+    padding: .7em;
+    color: #fff;
+}
+
+.textInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    width: 100vw;
+}
+
+.textInput input {
+    width: 88%;
+    height: 2em;
+    border: 0.01em solid #000;
+    border-radius: 0.15em;
+    font-size: 2em;
+    padding: 0.4em;
+}
+
+.textInput input:hover {
+    border: 0.05em solid #000;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button button {
+    padding: .7em 1em;
+    font-size: 1.3em;
+    color: #fff;
+    background: rgb(237, 26, 223);
+    border: 0.1em solid #fff;
+}
+
+.searchResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1em;   
+}
+
+.searchResult div {
+    background-color: #fff;
+    color: rgb(237, 26, 223);
+    margin: 1em auto;
+    width: 88%;
+    padding: 1em;
+    font-weight: 700;
+    font-size: 1.3em;
+    display: none;
+}
+
+footer {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > li {
+    list-style: none;
+    margin: 1.2em;
+    background-color: transparent;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer li > a {
+    color: #fff;
+    font-size: 1.9em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+footer > li a:hover {
+    font-size: 2.3em;
+ }
