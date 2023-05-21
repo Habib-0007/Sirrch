@@ -48,16 +48,29 @@ header h1 {
 }
 
 .textInput input {
-    width: 88%;
+    width: 95%;
     height: 2em;
-    border: 0.01em solid #000;
-    border-radius: 0.15em;
-    font-size: 2em;
-    padding: 0.4em;
+    border: 0.05em solid #000;
+    border-radius: 0.3em;
+    font-size: 1.19em;
+    padding: 1.2em .6em;
+    max-width: 400px;
+    transition: all ease 700ms;
+}
+
+.textInput input::placeholder {
+    color: #000;
 }
 
 .textInput input:hover {
-    border: 0.05em solid #000;
+    border: 0.1em solid #000;
+    caret-color: rgb(237, 26, 223);
+    font-size: 1.2em;
+    background: #fff;
+}
+
+.textInput input:hover::placeholder {
+    color: rgb(237, 26, 223);
 }
 
 .button {
@@ -68,31 +81,91 @@ header h1 {
 
 .button button {
     padding: .7em 1em;
-    font-size: 1.3em;
-    color: #fff;
-    background: rgb(237, 26, 223);
-    border: 0.1em solid #fff;
+    font-size: 1.1em;
+    background: #fff;
+    color: rgb(237, 26, 223);
+    box-shadow: 1px 1px 3px 0px #fff;
+    border-radius: .3em;
+    transition: all ease 1s;
+}
+
+.button button:hover {
+    box-shadow: 1px 1px 3px 0px #000;
+    font-size: 1.15em;
 }
 
 .searchResult {
-    display: flex;
+   /* display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 1em;   
+    */
 }
 
-.searchResult div {
+.searchResult div.resultContainer {
     background-color: #fff;
     color: rgb(237, 26, 223);
     margin: 1em auto;
     width: 88%;
+    max-width: 400px;
     padding: 1em;
     font-weight: 700;
     font-size: 1.3em;
     display: none;
+    opacity: 0;
+    border-radius: .4em;
+    transition: all ease 2s;
 }
 
+.custom-loader {
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  padding:1px;
+  display: none; background:conic-gradient(#0000 10%, #fff) content-box;
+  -webkit-mask: repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+    radial-gradient(farthest-side,#0000 calc(100% - 4.5px),#000 calc(100% - 4px));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation:s4 1s infinite steps(10);
+}
+@keyframes s4 {to{transform: rotate(1turn)}}
+
+.searchResult div.resultContainer .textArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.searchResult div.resultContainer .textArea div {
+    display: flex;
+}
+
+.searchResult div.resultContainer .textArea div p {
+    margin-left: .4em;
+    color: #000;
+    cursor: pointer;
+}
+
+.searchResult div.resultContainer .textArea i {
+    font-size: 1.3em;
+}
+
+.answer, .example {
+    margin-top: .6em;
+}
+
+.answer em, .example em {
+    color: #000;
+    text-decoration: underline;
+}
+
+.speechType {
+    color: #000;
+    text-transform: capitalize;
+}
 footer {
     height: 20vh;
     display: flex;

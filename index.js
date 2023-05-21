@@ -1,33 +1,52 @@
 let searchText = document.querySelector(".textInput input");
 let searchBtn = document.querySelector(".button button");
-let searchResult = document.querySelectorAll(".searchResult div");
+let searchResult = document.querySelector(".searchResult div");
+let audio = document.querySelector("#audio");
+let volume = document.querySelector("#volume");
+let word = document.querySelector(".textArea h4");
+let answer = document.querySelector(".answer");
+let example = document.querySelector(".example");
+let phonetic = document.querySelector(".phonetic");
+let speechType = document.querySelector(".speechType");
+
+
 
 function searchWord() {
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key': '9b1147eb8bmsh565f0fdba4bb370p14b2fbjsn169b1c26d31d',
-			'X-RapidAPI-Host': 'mashape-community-urban-dictionary.p.rapidapi.com'
-		}
-	};
-	
-	fetch(`https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${searchText.value}`, options)
+	fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchText.value}`)
 		.then(response => response.json())
-		.then(response => {
-			searchResult[0].innerText = response.list[0].definition;
-			searchResult[1].innerText = response.list[1].definition;
-			searchResult[2].innerText = response.list[2].definition;
-			searchResult[3].innerText = response.list[3].definition;
-			searchResult[4].innerText = response.list[4].definition;
-			searchResult[5].innerText = response.list[5].definition;
-			searchResult[6].innerText = response.list[6].definition;
-			searchResult[7].innerText = response.list[7].definition;
-			searchResult[8].innerText = response.list[8].definition;
-			searchResult[9].innerText = response.list[9].definition;
+		.then(data => {
+		speechType = data[0].meanings[0].partOfSpeech;
+		phonetic.innerText = `${data[0].phonetics[0].text} ${data[0].phonetics[1].text}`;
+		word.innerText = searchText.value;
+		answer.innerHTML=`<em> Definition: </em> <br> 1. ${data[0].meanings[0].definitions[0].definition} &nbsp; <span class="speechType"> ${speechType} </span> <br> 2. ${data[0].meanings[1].definitions[0].definition} &nbsp; <span class="speechType"> ${data[0].meanings[1].partOfSpeech} </span>`;
+		 example.innerHTML = `<em> Example: </em> <br> • ${data[0].meanings[0].definitions[1].example}`; 
+		
+		function play() {
+    volume.classList.remove("fa-volume-off");
+		volume.classList.add("fa-volume-up");
+		    audio.src = data[0].phonetics[0].audio;
+		audio.play();
+}
+
+function stop() {
+    volume.classList.add("fa-volume-off");
+		volume.classList.remove("fa-volume-up");
+}
+
+volume.addEventListener("click", () => {
+
+    if (volume.classList.contains("fa-volume-off")) {
+        play();
+    }
+    else {
+        stop();
+    }
+    });
 		})
 		.catch(err => console.error(err));
-
-		searchResult.forEach( eachSearchResult => eachSearchResult.style.display = "block");
+				
+		searchResult.style.display = "block";
+    setTimeout( () => searchResult.style.opacity = "1", 300);		
 
 }
 
