@@ -1,5 +1,5 @@
 let searchText = document.querySelector(".textInput input");
-let searchBtn = document.querySelector(".button button");
+let searchBtn = document.querySelector(".textInput button");
 let searchResult = document.querySelector(".searchResult div");
 let audio = document.querySelector("#audio");
 let volume = document.querySelector("#volume");
